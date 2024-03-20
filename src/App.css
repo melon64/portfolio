@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+.terminal {
+    resize: both;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    min-width: 300px;
+    min-height: 200px;
+
+    background-color: black;
+    color: limegreen;
+    font-family: 'Consolas', monospace;
+    padding: 20px;
+    overflow-y: auto;
+    height: 90vh;
+
+    border-radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.terminal-input-container {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.terminal-input-form {
+    display: flex;
+    flex-grow: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.terminal-input {
+    background-color: black;
+    color: limegreen;
+    border: none;
+    outline: none;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+    flex-grow: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.autocomplete-suggestion {
+    position: absolute;
+    margin-top: 1px;
+    left: 0;
+    margin-left: calc(2ch);
+    color: #555;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+    pointer-events: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.prompt {
+    color: limegreen;
+    margin-right: 5px;
+}
+
+/* .terminal-input::after {
+    content: '|';
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+} */
+
+.terminal-output {
+    margin-top: 10px;
+}
+
+.command {
+    font-weight: bold;
+}
+
+.output {
+    margin-left: 20px;
 }
