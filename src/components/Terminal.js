@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Rnd } from 'react-rnd';
 import TerminalInput from './TerminalInput';
 import TerminalOutput from './TerminalOutput';
 
@@ -7,20 +8,19 @@ function Terminal() {
         { command: '', output: 'Welcome to my portfolio terminal. Type "help" for a list of commands.' }
     ]);
     const [input, setInput] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);  //Start with 0 or history.length - 1
+    const [currentIndex, setCurrentIndex] = useState(history.length);
 
     useEffect(() => {
-        //Only update input when navigating through history
         if (currentIndex >= 0 && currentIndex < history.length) {
-            setInput(history[currentIndex].command);
+            setInput(history[currentIndex].command || '');
         }
-    }, [currentIndex, history]);
+    }, [currentIndex]);
 
     const executeCommand = (command) => {
         const output = command + ': Command executed';
         const newHistory = [...history, { command, output }];
         setHistory(newHistory);
-        setCurrentIndex(newHistory.length);  //Point currentIndex beyond the last command
+        setCurrentIndex(newHistory.length);
         setInput('');
     };
 
@@ -32,20 +32,49 @@ function Terminal() {
         }
     };
 
+    const handleMinimize = () => {
+        console.log('Minimize the terminal');
+    };
+
+    const handleMaximize = () => {
+        console.log('Maximize the terminal');
+    };
+
+    const handleClose = () => {
+        console.log('Close the terminal');
+    };
+
     return (
-        <div className="terminal" onKeyDown={handleKeyDown}>
-            {history.map((entry, index) => (
-                <div key={index}>
-                    <TerminalOutput command={entry.command} output={entry.output} />
+        <Rnd
+            className="terminal-rnd"
+            dragHandleClassName="drag-handle"
+            enableResizing={{
+                bottom: true,
+                bottomRight: true,
+                right: true,
+            }}
+            minWidth={300}
+            minHeight={200}
+        >
+            <div className="terminal" onKeyDown={handleKeyDown}>
+                <div className="terminal-top-bar drag-handle">
+                    <button onClick={handleMinimize}>_</button>
+                    <button onClick={handleMaximize}>[]</button>
+                    <button onClick={handleClose}>X</button>
                 </div>
-            ))}
-            <TerminalInput 
-                input={input} 
-                setInput={setInput} 
-                onCommand={executeCommand} 
-                commandList={['about', 'projects', 'contact']}
-            />
-        </div>
+                <div className="terminal-body">
+                    {history.map((entry, index) => (
+                        <TerminalOutput key={index} command={entry.command} output={entry.output} />
+                    ))}
+                    <TerminalInput 
+                        input={input} 
+                        setInput={setInput} 
+                        onCommand={executeCommand} 
+                        commandList={['about', 'projects', 'contact']}
+                    />
+                </div>
+            </div>
+        </Rnd>
     );
 }
 
