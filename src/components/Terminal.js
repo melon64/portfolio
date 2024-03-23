@@ -14,7 +14,7 @@ function Terminal() {
         if (currentIndex >= 0 && currentIndex < history.length) {
             setInput(history[currentIndex].command || '');
         }
-    }, [currentIndex]);
+    }, [currentIndex, history]);
 
     const executeCommand = (command) => {
         const output = command + ': Command executed';
@@ -48,13 +48,22 @@ function Terminal() {
         <Rnd
             className="terminal-rnd"
             dragHandleClassName="drag-handle"
+            default={{
+                x: (window.innerWidth / 2) - 300,  // Center the terminal horizontally
+                y: (window.innerHeight / 2) - 200,  // Start at the top vertically
+                width: 600,
+                height: 400,
+            }}
             enableResizing={{
                 bottom: true,
                 bottomRight: true,
                 right: true,
+                top: false,
+                topLeft: false,
+                topRight: false,
+                left: false,
+                bottomLeft: false,
             }}
-            minWidth={300}
-            minHeight={200}
         >
             <div className="terminal" onKeyDown={handleKeyDown}>
                 <div className="terminal-top-bar drag-handle">

@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import Terminal from './components/Terminal';
+import Desktop from './components/Desktop';
 
 function App() {
   return (
-    <Terminal />
+    <div className="app-container">
+      <Desktop />
+    </div>
   );
 }
 

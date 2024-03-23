@@ -1,3 +1,11 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 .terminal {
     overflow: auto;
     max-width: 100%;
@@ -24,7 +32,7 @@
 .terminal-top-bar {
     background-color: #333;
     color: white;
-    padding: 5px 10px;
+    padding: 5px 20px;
     display: flex;
     justify-content: flex-end;
     user-select: none;
@@ -122,4 +130,62 @@
 
 .terminal-body::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+}
+
+/* desktop stuff */
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #282c34;
+    overflow: hidden;
+}
+
+.taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensures the taskbar spans the full width of the desktop */
+    height: 50px; /* Adjust based on your design, ensuring it's included in the total height */
+    background-color: #a8a8a8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.taskbar .terminal-button {
+    background: url('/public/terminal.png') no-repeat center center;
+    background-size: contain;
+}
+
+.taskbar button {
+    width: 30px;
+    height: 30px;
+}
+
+.taskbar .app-icons {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.taskbar .app-icon {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.taskbar .system-tray {
+    display: flex;
+}
+
+.system-tray-item {
+    margin-right: 30px;
 }
