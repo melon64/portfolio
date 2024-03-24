@@ -3,12 +3,17 @@ import { Rnd } from 'react-rnd';
 import TerminalInput from './TerminalInput';
 import TerminalOutput from './TerminalOutput';
 
-function Terminal() {
+function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
     const [history, setHistory] = useState([
         { command: '', output: 'Welcome to my portfolio terminal. Type "help" for a list of commands.' }
     ]);
     const [input, setInput] = useState('');
     const [currentIndex, setCurrentIndex] = useState(history.length);
+    const [isMaximized, setIsMaximized] = useState(false);
+    const [size, setSize] = useState({ width: 600, height: 400 });  //Default size
+    const [position, setPosition] = useState({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+    const [terminalOutputHeight, setTerminalOutputHeight] = useState(400);  //Initial height of the terminal output
+
 
     useEffect(() => {
         if (currentIndex >= 0 && currentIndex < history.length) {
@@ -33,26 +38,49 @@ function Terminal() {
     };
 
     const handleMinimize = () => {
-        console.log('Minimize the terminal');
+        minimizeTerminal();
     };
 
     const handleMaximize = () => {
-        console.log('Maximize the terminal');
+        setIsMaximized(!isMaximized);
+        if (!isMaximized) {
+            setSize({ width: 1280, height: 720 });
+            setPosition({ x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 400});
+        }
+        else {
+            setSize({ width: 600, height: 400 });
+            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+        }
     };
 
     const handleClose = () => {
-        console.log('Close the terminal');
+        closeTerminal();
+    };
+
+    useEffect(() => {
+        const terminalElement = document.querySelector('.terminal-rnd');
+        if (terminalElement) {
+            const height = size.height;
+            setTerminalOutputHeight(height);
+        }
+    }, [size]);
+
+    const outputContainerStyle = {
+        maxHeight: `${terminalOutputHeight - 100}px`,
+        overflowY: 'auto',
     };
 
     return (
+        <div className={`terminal-container ${isVisible ? '' : 'hidden'}`}>
         <Rnd
             className="terminal-rnd"
             dragHandleClassName="drag-handle"
-            default={{
-                x: (window.innerWidth / 2) - 300,  // Center the terminal horizontally
-                y: (window.innerHeight / 2) - 200,  // Start at the top vertically
-                width: 600,
-                height: 400,
+            size={size}
+            position={position}
+            onDragStop={(e, d) => setPosition({ x: d.x, y: d.y })}
+            onResizeStop={(e, direction, ref, delta, position) => {
+                setSize({ width: ref.offsetWidth, height: ref.offsetHeight });
+                setPosition(position);
             }}
             enableResizing={{
                 bottom: true,
@@ -71,10 +99,14 @@ function Terminal() {
                     <button onClick={handleMaximize}>[]</button>
                     <button onClick={handleClose}>X</button>
                 </div>
+
                 <div className="terminal-body">
-                    {history.map((entry, index) => (
-                        <TerminalOutput key={index} command={entry.command} output={entry.output} />
-                    ))}
+                    <div className="terminal-output-container" style={outputContainerStyle}>
+                        {/* TODO: Implement scrolling newest into view */}
+                        {history.map((entry, index) => (
+                            <TerminalOutput key={index} command={entry.command} output={entry.output} />
+                        ))}
+                    </div>
                     <TerminalInput 
                         input={input} 
                         setInput={setInput} 
@@ -84,6 +116,7 @@ function Terminal() {
                 </div>
             </div>
         </Rnd>
+        </div>
     );
 }
 
