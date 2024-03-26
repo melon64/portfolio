@@ -1,0 +1,51 @@
+
+.window-content {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    min-width: 300px;
+    min-height: 200px;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+
+    background-color: white;
+    font-family: 'Consolas', monospace;
+    padding: 20px;
+    height: 90vh;
+}
+
+.window-top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #333;
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: flex-end;
+    user-select: none;
+}
+
+.window-top-bar button {
+    background-color: #444;
+    border: none;
+    color: white;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.window-rnd {
+    overflow: hidden;
+    border-radius: 10px;
+    /* display: flex;
+    flex-direction: column;
+    height: 100%; */
+}
+
+.window-container.hidden {
+    display: none;
+}

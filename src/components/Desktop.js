@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Terminal from './Terminal';
 import SystemTrayTime from './SystemTrayTime';
+import Window from './Window';
 
 function Desktop() {
     const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -12,6 +13,7 @@ function Desktop() {
 
     return (
         <div className="desktop">
+            <Window/>
             {isTerminalOpen && (
                 <Terminal
                     isVisible={isTerminalVisible}

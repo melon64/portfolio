@@ -15,15 +15,15 @@
     min-width: 300px;
     min-height: 200px;
 
-    width: 100%; /* Example width, adjust as needed */
-    height: 100%; /* Example height, adjust as needed */
-    overflow: hidden; /* Ensures the child elements don't overflow the rounded corners */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /*Ensures the child elements don't overflow the rounded corners*/
 
     background-color: black;
     color: limegreen;
     font-family: 'Consolas', monospace;
-    padding: 20px;
     height: 90vh;
+    border-radius: 10px;
 }
 
 .terminal-rnd {
@@ -200,7 +200,8 @@ html, body {
 .system-tray {
     display: flex;
     justify-content: flex-end;
-    padding: 0 50px;
+    padding: 0 0px;
+    font-family: 'Consolas', monospace;
     /* other styles */
 }
 
@@ -209,6 +210,7 @@ html, body {
     line-height: 1.2;
     color: rgb(0, 0, 0); /* Adjust the color to fit your design */
     font-size: 16px; /* Adjust the size to fit your design */
+    padding: 30px 30px;
 }
 
 .terminal-container.hidden {
