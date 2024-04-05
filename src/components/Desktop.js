@@ -2,8 +2,40 @@ import React, { useState } from 'react';
 import Terminal from './Terminal';
 import SystemTrayTime from './SystemTrayTime';
 import Window from './Window';
+import AppIcon from './AppIcon';
 
 function Desktop() {
+    const [windows, setWindows] = useState([
+        { id: 'testwindow', isOpen: true, isVisible: true, isMaximized: false },
+    ]);
+
+    const toggleWindow = (windowId) => {
+        setWindows(windows.map(win => {
+            if (win.id === windowId) {
+                return { ...win, isOpen: !win.isOpen };
+            }
+            return win;
+        }));
+    };
+
+    const minimizeWindow = (windowId) => {
+        setWindows(windows.map(win => {
+            if (win.id === windowId) {
+                return { ...win, isVisible: false };
+            }
+            return win;
+        }));
+    };
+
+    const showWindow = (windowId) => {
+        setWindows(windows.map(win => {
+            if (win.id === windowId) {
+                return { ...win, isVisible: true };
+            }
+            return win;
+        }));
+    };
+
     const [isTerminalOpen, setIsTerminalOpen] = useState(false);
     const [isTerminalVisible, setIsTerminalVisible] = useState(true);
 
@@ -13,7 +45,20 @@ function Desktop() {
 
     return (
         <div className="desktop">
-            <Window/>
+            {windows.map((win) => {
+                if (win.isOpen) {
+                    return (
+                        <Window
+                            key={win.id}
+                            isVisible={win.isVisible}
+                            onMinimize={() => minimizeWindow(win.id)}
+                            onClose={() => toggleWindow(win.id)}
+                            children={<div>Window content</div>}
+                        />
+                    );
+                }
+                return null;
+            })}
             {isTerminalOpen && (
                 <Terminal
                     isVisible={isTerminalVisible}
@@ -23,25 +68,22 @@ function Desktop() {
             )}
             <div className="taskbar">
                 <div className="app-icons">
-                    <button className={`terminal-button 
-                    ${isTerminalVisible && isTerminalOpen ? 'highlighted' : ''}
-                    ${ isTerminalOpen ? 'active' : ''}`
-                } onClick={
-                        () => {
-                            if (!isTerminalVisible && !isTerminalOpen) {
-                                showTerminal();
-                                toggleTerminal();
-                            } else if (!isTerminalVisible) {
-                                showTerminal();
-                            } else if (!isTerminalOpen) {
-                                toggleTerminal();
-                            } else if (isTerminalVisible && isTerminalOpen) {
-                                minimizeTerminal();
-                            }
-                        }
-                    }>
-                    </button>
-                    <button className=""></button>
+                    <AppIcon 
+                        isVisible={isTerminalVisible} 
+                        isOpen={isTerminalOpen} 
+                        toggleVisibility={showTerminal} 
+                        toggleOpen={toggleTerminal} 
+                        minimize={minimizeTerminal} 
+                        iconClass="taskbar-button terminal-button" 
+                    />
+                    <AppIcon 
+                        isVisible={windows.find(win => win.id === 'testwindow').isVisible} 
+                        isOpen={windows.find(win => win.id === 'testwindow').isOpen} 
+                        toggleVisibility={() => showWindow('testwindow')} 
+                        toggleOpen={() => toggleWindow('testwindow')} 
+                        minimize={() => minimizeWindow('testwindow')} 
+                        iconClass="taskbar-button test-button"
+                    />
                     <button className=""></button>
                     <button className=""></button>
                     <button className=""></button>

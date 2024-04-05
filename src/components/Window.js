@@ -23,7 +23,7 @@ function Window({ title, isVisible, onMinimize, onClose, children }) {
     const handleClose = () => onClose();
 
     return (
-        <div className={`window-container ${true ? '' : 'hidden'}`}>
+        <div className={`window-container ${isVisible ? '' : 'hidden'}`}>
             <Rnd
                 className="window-rnd"
                 dragHandleClassName="drag-handle"

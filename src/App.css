@@ -175,6 +175,11 @@ html, body {
     background-size: contain;
 }
 
+.taskbar .test-button {
+    background: url('/public/notepad.png') no-repeat center center;
+    background-size: contain;
+}
+
 .taskbar button {
     width: 40px;
     height: 40px;
@@ -217,14 +222,6 @@ html, body {
     display: none;
 }
 
-.terminal-button.highlighted {
-    background-color: white;
-}
-
-.terminal-button.active{
-    border-bottom:3px solid rgb(104, 104, 104);
-}
-
 .terminal-output-container {
     flex: 1;
     overflow-y: auto;
@@ -246,4 +243,12 @@ html, body {
 
 .terminal-output-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+}
+
+.taskbar-button.highlighted {
+    background-color: white;
+}
+
+.taskbar-button.active{
+    border-bottom:3px solid rgb(104, 104, 104);
 }
