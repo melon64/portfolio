@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 import './Window.css';
 
-function Window({ title, isVisible, onMinimize, onClose, children }) {
+function Window({ title, isVisible, onMinimize, onClose, isMaximizedAlready, children }) {
     const [size, setSize] = useState({ width: 600, height: 400 });
     const [position, setPosition] = useState({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
-    const [isMaximized, setIsMaximized] = useState(false);
+    const [isMaximized, setIsMaximized] = useState(isMaximizedAlready);
+
+    useEffect(() => {
+        if (isMaximized) {
+            setSize({ width: 1280, height: 800 });
+            setPosition({ x: (window.innerWidth / 2) - 640, y: (window.innerHeight / 2) - 550 });
+        } else {
+            setSize({ width: 600, height: 400 });
+            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+        }
+    }, [isMaximized]);
 
     const handleMinimize = () => onMinimize();
     const handleMaximize = () => {
@@ -23,7 +33,7 @@ function Window({ title, isVisible, onMinimize, onClose, children }) {
     const handleClose = () => onClose();
 
     return (
-        <div className={`window-container ${true ? '' : 'hidden'}`}>
+        <div className={`window-container ${isVisible ? '' : 'hidden'}`}>
             <Rnd
                 className="window-rnd"
                 dragHandleClassName="drag-handle"
@@ -48,7 +58,7 @@ function Window({ title, isVisible, onMinimize, onClose, children }) {
                 <div className="window-top-bar drag-handle">
                     <span>{title}</span>
                     <button onClick={handleMinimize}>_</button>
-                    <button onClick={handleMaximize}>{isMaximized ? '[]' : '❐'}</button>
+                    <button onClick={handleMaximize}>{isMaximized ? '❐' : '[]'}</button>
                     <button onClick={handleClose}>X</button>
                 </div>
                 <div className="window-content">
