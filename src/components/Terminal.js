@@ -96,7 +96,7 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
             <div className="terminal" onKeyDown={handleKeyDown}>
                 <div className="terminal-top-bar drag-handle">
                     <button onClick={handleMinimize}>_</button>
-                    <button onClick={handleMaximize}>{isMaximized ? '[]' : '❐'}</button>
+                    <button onClick={handleMaximize}>{isMaximized ? '❐' : '[]'}</button>
                     <button onClick={handleClose}>X</button>
                 </div>
 

@@ -3,11 +3,65 @@ import Terminal from './Terminal';
 import SystemTrayTime from './SystemTrayTime';
 import Window from './Window';
 import AppIcon from './AppIcon';
+import DesktopIcon from './DesktopIcon';
+import './Desktop.css';
 
 function Desktop() {
     const [windows, setWindows] = useState([
-        { id: 'testwindow', isOpen: true, isVisible: true, isMaximized: false },
+        { id: 'testwindow', isOpen: false, isVisible: true, isMaximized: false, children: <div>Test window content</div>},
+        { id: 'resumewindow', isOpen: false, isVisible: true, isMaximized: true, children:
+            <object
+                data={'/pdf/resumev6.pdf'}
+                type="application/pdf"
+                width="100%"
+                height="100%"
+            >
+                <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={'/pdf/resumev6.pdf'}>Download PDF</a>.</p>
+            </object>
+        },
     ]);
+
+    const desktopIcons = [
+        {
+            id: 'terminal',
+            title: 'Terminal',
+            imgSrc: '/terminal.png',
+            action: () => {
+                if (!isTerminalOpen){
+                    toggleTerminal();
+                }
+                if (!isTerminalVisible) {
+                    showTerminal();
+                }
+            }
+        },
+        {
+            id: 'testwindow',
+            title: 'README.md',
+            imgSrc: '/notepad.png',
+            action: () => {
+                if (!windows.find(win => win.id === 'testwindow').isOpen) {
+                    toggleWindow('testwindow');
+                }
+                if (!windows.find(win => win.id === 'testwindow').isVisible) {
+                    showWindow('testwindow');
+                }
+            }
+        },
+        {
+            id: 'resumewindow',
+            title: 'Resume',
+            imgSrc: '/CV.webp',
+            action: () => {
+                if (!windows.find(win => win.id === 'resumewindow').isOpen) {
+                    toggleWindow('resumewindow');
+                }
+                if (!windows.find(win => win.id === 'resumewindow').isVisible) {
+                    showWindow('resumewindow');
+                }
+            }
+        }
+    ];
 
     const toggleWindow = (windowId) => {
         setWindows(windows.map(win => {
@@ -45,6 +99,16 @@ function Desktop() {
 
     return (
         <div className="desktop">
+            {desktopIcons.map(icon => (
+                <DesktopIcon
+                    key={icon.id}
+                    id={icon.id}
+                    title={icon.title}
+                    imgSrc={icon.imgSrc}
+                    onDoubleClick={icon.action}
+                />
+            ))}
+
             {windows.map((win) => {
                 if (win.isOpen) {
                     return (
@@ -53,7 +117,8 @@ function Desktop() {
                             isVisible={win.isVisible}
                             onMinimize={() => minimizeWindow(win.id)}
                             onClose={() => toggleWindow(win.id)}
-                            children={<div>Window content</div>}
+                            isMaximizedAlready={win.isMaximized}
+                            children={win.children}
                         />
                     );
                 }
@@ -84,7 +149,14 @@ function Desktop() {
                         minimize={() => minimizeWindow('testwindow')} 
                         iconClass="taskbar-button test-button"
                     />
-                    <button className=""></button>
+                    <AppIcon 
+                        isVisible={windows.find(win => win.id === 'resumewindow').isVisible} 
+                        isOpen={windows.find(win => win.id === 'resumewindow').isOpen} 
+                        toggleVisibility={() => showWindow('resumewindow')} 
+                        toggleOpen={() => toggleWindow('resumewindow')} 
+                        minimize={() => minimizeWindow('resumewindow')} 
+                        iconClass="taskbar-button resume-button"
+                    />
                     <button className=""></button>
                     <button className=""></button>
                     <button className=""></button>
