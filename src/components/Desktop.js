@@ -1,25 +1,51 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Terminal from './Terminal';
 import SystemTrayTime from './SystemTrayTime';
 import Window from './Window';
 import AppIcon from './AppIcon';
 import DesktopIcon from './DesktopIcon';
 import './Desktop.css';
+import HALO from 'vanta/dist/vanta.halo.min';
+import * as THREE from 'three';
 
 function Desktop() {
     const [windows, setWindows] = useState([
         { id: 'testwindow', isOpen: false, isVisible: true, isMaximized: false, children: <div>Test window content</div>},
         { id: 'resumewindow', isOpen: false, isVisible: true, isMaximized: true, children:
             <object
-                data={'/pdf/resumev6.pdf'}
+                data={'/pdf/resume.pdf'}
                 type="application/pdf"
                 width="100%"
                 height="100%"
             >
-                <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={'/pdf/resumev6.pdf'}>Download PDF</a>.</p>
+                <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={'/pdf/resume.pdf'}>Download PDF</a>.</p>
             </object>
         },
     ]);
+
+    const [vantaEffect, setVantaEffect] = useState(0);
+    const vantaRef = useRef(null);
+
+    useEffect(() => {
+        if (!vantaEffect) {
+            setVantaEffect(HALO({
+                el: vantaRef.current,
+                THREE: THREE, // Use the same THREE instance, important if bundling
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                amplitudeFactor: 1.0,
+                size: 1.5,
+                backgroundColor: 0x0,
+                color: 0x482794
+            }));
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy();
+        };
+    }, [vantaEffect]);
 
     const desktopIcons = [
         {
@@ -98,7 +124,7 @@ function Desktop() {
     const showTerminal = () => setIsTerminalVisible(true);
 
     return (
-        <div className="desktop">
+        <div ref={vantaRef} className="desktop">
             {desktopIcons.map(icon => (
                 <DesktopIcon
                     key={icon.id}
