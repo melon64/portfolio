@@ -26,6 +26,11 @@
     border-radius: 10px;
 }
 
+.terminal-container {
+    z-index: 100;
+    position: relative;
+}
+
 .terminal-rnd {
     overflow: hidden;
     border-radius: 10px;

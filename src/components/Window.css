@@ -1,3 +1,8 @@
+.window-container {
+    z-index: 100;
+    position: relative;
+}
+
 .window-content {
     display: flex;
     flex-direction: column;
