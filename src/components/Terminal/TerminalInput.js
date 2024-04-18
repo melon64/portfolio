@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Terminal.css';
 
 function TerminalInput({ input, setInput, onCommand, commandList }) {
     const [suggestions, setSuggestions] = useState([]);

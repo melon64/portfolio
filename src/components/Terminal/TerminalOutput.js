@@ -1,4 +1,5 @@
 import React from 'react';
+import './Terminal.css';
 
 function TerminalOutput({ command, output }) {
     const renderOutput = () => {

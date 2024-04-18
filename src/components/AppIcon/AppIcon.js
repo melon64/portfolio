@@ -1,4 +1,5 @@
 import React from 'react';
+import './AppIcon.css';
 
 function AppIcon({ isVisible, isOpen, toggleVisibility, toggleOpen, minimize, iconClass }) {
     return (

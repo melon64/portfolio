@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Terminal from './Terminal';
-import SystemTrayTime from './SystemTrayTime';
-import Window from './Window';
-import AppIcon from './AppIcon';
-import DesktopIcon from './DesktopIcon';
+import Terminal from '../Terminal/Terminal';
+import SystemTrayTime from './SystemTray/SystemTrayTime';
+import Window from '../Window/Window';
+import AppIcon from '../AppIcon/AppIcon';
+import DesktopIcon from './DesktopIcon/DesktopIcon';
 import './Desktop.css';
 import HALO from 'vanta/dist/vanta.halo.min';
 import * as THREE from 'three';

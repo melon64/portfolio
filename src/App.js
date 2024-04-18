@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Desktop from './components/Desktop';
+import Desktop from './components/Desktop/Desktop';
 
 function App() {
   return (

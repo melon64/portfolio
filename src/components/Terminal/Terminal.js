@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 import TerminalInput from './TerminalInput';
 import TerminalOutput from './TerminalOutput';
+import './Terminal.css';
 
 function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
     const [history, setHistory] = useState([
@@ -13,6 +14,13 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
     const [size, setSize] = useState({ width: 600, height: 400 });  //Default size
     const [position, setPosition] = useState({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
     const [terminalOutputHeight, setTerminalOutputHeight] = useState(400);  //Initial height of the terminal output
+    const outputContainerRef = React.useRef(null);
+
+    React.useEffect(() => {
+        if (outputContainerRef.current) {
+            outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
+        }
+    }, [history]);
 
 
     useEffect(() => {
@@ -101,10 +109,13 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
                 </div>
 
                 <div className="terminal-body">
-                    <div className="terminal-output-container" style={outputContainerStyle}>
-                        {/* TODO: Implement scrolling newest into view */}
+                    <div className="terminal-output-container" ref={outputContainerRef} style={outputContainerStyle}>
                         {history.map((entry, index) => (
-                            <TerminalOutput key={index} command={entry.command} output={entry.output} />
+                            <TerminalOutput 
+                                key={index} 
+                                command={entry.command} 
+                                output={entry.output} 
+                            />
                         ))}
                     </div>
                     <TerminalInput 
