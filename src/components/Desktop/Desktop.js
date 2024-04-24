@@ -10,7 +10,7 @@ import * as THREE from 'three';
 
 function Desktop() {
     const [windows, setWindows] = useState([
-        { id: 'testwindow', isOpen: false, isVisible: true, isMaximized: false, children: <div>Test window content</div>},
+        { id: 'testwindow', isOpen: false, isVisible: true, isMaximized: false, children: <div>Hi, this is my portfolio desktop simulation! Treat this as a real desktop, open apps, click on the icons, and have fun!</div>},
         { id: 'resumewindow', isOpen: false, isVisible: true, isMaximized: true, children:
             <object
                 data={'/pdf/resume.pdf'}

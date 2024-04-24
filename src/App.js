@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Desktop from './components/Desktop/Desktop';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setLoading(false);
+      }, 2500);
+      return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="app-container">
-      <Desktop />
+      {loading ? <LoadingScreen /> : <Desktop />}
     </div>
   );
 }

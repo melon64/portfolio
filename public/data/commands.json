@@ -1,0 +1,21 @@
+{
+    "help" : "Available commands: about, projects, contact, experience",
+    "about": [
+        "My name is Felix Xie.", 
+        "I am studying Computer Science and Financial Management at the University of Waterloo, with a minor in Computational Mathematics.", 
+        "I love innovation and learning.", 
+        "Piano lover."
+    ],
+    "projects": "https://github.com/melon64?tab=repositories or open the projects app on the desktop!",
+    "contact": [
+        "Linkedin: https://www.linkedin.com/in/~fx/",
+        "Email: felix.xie@hotmail.com",
+        "Phone: 647-613-3778"
+    ],
+    "experience": [
+        "SparkLease (https://www.sparklease.com/en/) - Full Stack Developer Intern (Jan 2024 - Aug 2024)",
+        "RBC - Software Developer Intern (May 2023 - Aug 2023)",
+        "RBC - Software Developer Intern (July 2022 - Aug 2022)",
+        "1 year of professional experience in software development, with a focus on full stack, infrastructure, and security."
+    ]
+}

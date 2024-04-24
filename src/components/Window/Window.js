@@ -4,29 +4,29 @@ import './Window.css';
 
 function Window({ title, isVisible, onMinimize, onClose, isMaximizedAlready, children }) {
     const [size, setSize] = useState({ width: 600, height: 400 });
-    const [position, setPosition] = useState({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+    const [position, setPosition] = useState({ x: (window.innerWidth)/2 - 300, y: (window.innerHeight)/2 - 600 });
     const [isMaximized, setIsMaximized] = useState(isMaximizedAlready);
 
     useEffect(() => {
         if (isMaximized) {
             setSize({ width: 1280, height: 800 });
-            setPosition({ x: (window.innerWidth / 2) - 640, y: (window.innerHeight / 2) - 550 });
+            setPosition({ x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 700 });
         } else {
             setSize({ width: 600, height: 400 });
-            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+            setPosition({ x: (window.innerWidth)/2 - 300, y: (window.innerHeight)/2 - 600 });
         }
     }, [isMaximized]);
 
     const handleMinimize = () => onMinimize();
     const handleMaximize = () => {
         setIsMaximized(!isMaximized);
-        if (!isMaximized) {
+        if (isMaximized) {
             setSize({ width: 1280, height: 720 });
-            setPosition({ x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 400});
+            setPosition({  x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 700 });
         }
         else {
             setSize({ width: 600, height: 400 });
-            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+            setPosition({ x: (window.innerWidth)/2 - 300, y: (window.innerHeight)/2 - 600 });
         }
     };
 

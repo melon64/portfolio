@@ -12,8 +12,9 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
     const [currentIndex, setCurrentIndex] = useState(history.length);
     const [isMaximized, setIsMaximized] = useState(false);
     const [size, setSize] = useState({ width: 600, height: 400 });  //Default size
-    const [position, setPosition] = useState({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+    const [position, setPosition] = useState({ x: (window.innerWidth)/2 - 300, y: (window.innerHeight)/2 - 600});
     const [terminalOutputHeight, setTerminalOutputHeight] = useState(400);  //Initial height of the terminal output
+    const [commands, setCommands] = useState({});
     const outputContainerRef = React.useRef(null);
 
     React.useEffect(() => {
@@ -21,6 +22,13 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
             outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
         }
     }, [history]);
+
+    useEffect(() => {
+        fetch('/data/commands.json') 
+            .then(response => response.json())
+            .then(data => setCommands(data))
+            .catch(error => console.error('Error loading command data:', error));
+    }, []);
 
 
     useEffect(() => {
@@ -30,7 +38,7 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
     }, [currentIndex, history]);
 
     const executeCommand = (command) => {
-        const output = command + ': Command executed';
+        const output = commands[command.trim().toLowerCase()] || 'Command not recognized. Try again!';
         const newHistory = [...history, { command, output }];
         setHistory(newHistory);
         setCurrentIndex(newHistory.length);
@@ -53,11 +61,11 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
         setIsMaximized(!isMaximized);
         if (!isMaximized) {
             setSize({ width: 1280, height: 720 });
-            setPosition({ x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 400});
+            setPosition({ x: (window.innerWidth / 2) - 600, y: (window.innerHeight / 2) - 700});
         }
         else {
             setSize({ width: 600, height: 400 });
-            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 200 });
+            setPosition({ x: (window.innerWidth / 2) - 300, y: (window.innerHeight / 2) - 600 });
         }
     };
 
@@ -122,7 +130,7 @@ function Terminal({ isVisible, minimizeTerminal, closeTerminal }) {
                         input={input} 
                         setInput={setInput} 
                         onCommand={executeCommand} 
-                        commandList={['about', 'projects', 'contact']}
+                        commandList={Object.keys(commands)}
                     />
                 </div>
             </div>
