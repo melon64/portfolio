@@ -1,0 +1,62 @@
+[
+    {
+        "title": "ASCII Game Engine",
+        "link": "https://github.com/melon64/ascii-engine/",
+        "description": "An ASCII art game engine built in C++ from the ground up. Powered by ncurses.",
+        "imageUrl": "/images/UML.png"
+    },
+    {
+        "title": "ConsciousDB",
+        "link": "https://github.com/melon64/conscious-db/",
+        "description": "A C++ DBMS from scratch with included unit testing via GTest.",
+        "imageUrl": "/images/SQL.png"
+    },
+    {
+        "title": "Atomic",
+        "link": "https://github.com/melon64/Atomic-App/",
+        "description": "A full stack application made using Flask, React (TypeScript), MongoDB, and GCP.\nUses NLP to create a schedule matching the inputted goals of a user. Goals and progress tracking can be shared as if it were a social media post with other users.",
+        "imageUrl": "https://www.youtube.com/embed/miuACyarTks"
+    },
+    {
+        "title": "Tag Team",
+        "link": "https://github.com/melon64/ml-note-app/",
+        "description": "A powerful yet lightweight collaborative notes app. Built on GCP using Flask, MongoDB, React, and GPT-4.",
+        "imageUrl": "https://www.youtube.com/embed/9IoHi1T-We8"
+    },
+    {
+        "title": "A Comparative Study of ML Classifiers for Detecting Financial Fraud",
+        "link": "https://www.academia.edu/118290333",
+        "description": "A research paper on the use of AI in financial fraud detection. Wrote while under the mentorship of professor Giovanna Maria Dimitri.",
+        "imageUrl": "/images/research.png"
+    },
+    {
+        "title": "Session",
+        "link": "https://github.com/melon64/Session/",
+        "description": "A Flutter app using Firebase that tracks study habits and rewards them with points.",
+        "imageUrl": "https://www.youtube.com/embed/3FmUBz2DxOI"
+    },
+    {
+        "title": "Market Portfolio Algorithmic Trading",
+        "link": "https://github.com/melon64/stock-trading-algo/",
+        "description": "A Jupyter notebook using pandas and numpy to analyze and predict stock prices, building a portfolio of securities with yfinance data.",
+        "imageUrl": "/images/stock.png"
+    },
+    {
+        "title": "Cheat Sheet",
+        "link": "https://github.com/melon64/Cheat-Sheet",
+        "description": "Customizable macro board with computer vision made with Python and OpenCV.",
+        "imageUrl": "/images/detection.png"
+    },
+    {
+        "title": "Boggle",
+        "link": "https://github.com/melon64/ICS4UBoggle",
+        "description": "A Java implementation of the Boggle game with a GUI.",
+        "imageUrl": "/images/boggle.png"
+    },
+    {
+        "title": "NatureReads",
+        "link": "https://github.com/melon64/NatureReads",
+        "description": "An R package for data processing and visualization of the naturecounts dataset used by Birds Canada.",
+        "imageUrl": "https://www.youtube.com/embed/gRyk18bSc38"
+    }
+]

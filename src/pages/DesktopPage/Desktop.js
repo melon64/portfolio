@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Terminal from '../Terminal/Terminal';
-import SystemTrayTime from './SystemTray/SystemTrayTime';
-import Window from '../Window/Window';
-import AppIcon from '../AppIcon/AppIcon';
-import DesktopIcon from './DesktopIcon/DesktopIcon';
+import Terminal from '../../components/Terminal/Terminal';
+import SystemTrayTime from '../../components/Desktop/SystemTray/SystemTrayTime';
+import Window from '../../components/Window/Window';
+import AppIcon from '../../components/AppIcon/AppIcon';
+import DesktopIcon from '../../components/Desktop/DesktopIcon/DesktopIcon';
 import './Desktop.css';
 import HALO from 'vanta/dist/vanta.halo.min';
 import * as THREE from 'three';
+import ProjectSlideshow from '../../components/ProjectSlideshow/ProjectSlideshow';
 
 function Desktop() {
     const [windows, setWindows] = useState([
@@ -21,6 +22,7 @@ function Desktop() {
                 <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={'/pdf/resume.pdf'}>Download PDF</a>.</p>
             </object>
         },
+        { id: 'projectswindow', isOpen: false, isVisible: true, isMaximized: true, children: <ProjectSlideshow />}
     ]);
 
     const [vantaEffect, setVantaEffect] = useState(0);
@@ -84,6 +86,19 @@ function Desktop() {
                 }
                 if (!windows.find(win => win.id === 'resumewindow').isVisible) {
                     showWindow('resumewindow');
+                }
+            }
+        },
+        {
+            id: 'projectswindow',
+            title: 'Projects',
+            imgSrc: '/project.png',
+            action: () => {
+                if (!windows.find(win => win.id === 'projectswindow').isOpen) {
+                    toggleWindow('projectswindow');
+                }
+                if (!windows.find(win => win.id === 'projectswindow').isVisible) {
+                    showWindow('projectswindow');
                 }
             }
         }
@@ -183,7 +198,14 @@ function Desktop() {
                         minimize={() => minimizeWindow('resumewindow')} 
                         iconClass="taskbar-button resume-button"
                     />
-                    <button className=""></button>
+                    <AppIcon 
+                        isVisible={windows.find(win => win.id === 'projectswindow').isVisible} 
+                        isOpen={windows.find(win => win.id === 'projectswindow').isOpen} 
+                        toggleVisibility={() => showWindow('projectswindow')} 
+                        toggleOpen={() => toggleWindow('projectswindow')} 
+                        minimize={() => minimizeWindow('projectswindow')} 
+                        iconClass="taskbar-button projects-button"
+                    />
                     <button className=""></button>
                     <button className=""></button>
                     <button className=""></button>

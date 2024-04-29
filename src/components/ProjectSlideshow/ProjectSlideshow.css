@@ -1,0 +1,91 @@
+.project-slideshow-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.project-sidebar {
+    flex: 1;
+    max-width: 200px;
+    overflow-y: auto;
+    height: 100vh; /* Adjust based on your layout needs */
+    background-color: #f8f9fa;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover, .sidebar-button.active {
+    background-color: #e9ecef;
+}
+
+.project-slideshow {
+    flex: 3;
+    padding: 20px;
+    text-align: center;
+}
+.project-slideshow {
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    transition: opacity 0.1s ease;
+}
+
+.project-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.project-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.project-button:hover {
+    background-color: #0056b3;
+}
+
+.project-image.fade-in {
+    opacity: 1;
+}
+
+.project-image.fade-out {
+    opacity: 0;
+}

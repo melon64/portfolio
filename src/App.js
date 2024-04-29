@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import Desktop from './components/Desktop/Desktop';
+import Desktop from './pages/DesktopPage/Desktop';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 function App() {
