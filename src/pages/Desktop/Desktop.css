@@ -78,8 +78,8 @@
 .system-tray div {
     text-align: right;
     line-height: 1.2;
-    color: rgb(0, 0, 0); /* Adjust the color to fit your design */
-    font-size: 16px; /* Adjust the size to fit your design */
+    color: rgb(0, 0, 0);
+    font-size: 16px; 
     padding: 30px 30px;
 }
 

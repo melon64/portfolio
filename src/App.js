@@ -1,22 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Desktop from './pages/DesktopPage/Desktop';
-import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+import DesktopPage from './pages/Desktop/DesktopPage';
+import HeroPage from './pages/Hero/HeroPage';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-      const timer = setTimeout(() => {
-          setLoading(false);
-      }, 2500);
-      return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div className="app-container">
-      {loading ? <LoadingScreen /> : <Desktop />}
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/" element={<HeroPage />} />
+          <Route path="/pc" element={<DesktopPage />} />
+        </Routes>
+    </Router>
   );
 }
 
