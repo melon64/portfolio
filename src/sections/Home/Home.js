@@ -32,7 +32,7 @@ const Home = () => {
           <button className={`power-button ${isOn ? 'on' : ''}`} onClick={handleButtonClick}>
             <FontAwesomeIcon icon={faPowerOff} />
           </button>
-          <p className='Home-pc'>(psst, press me to view my interative portfolio)</p>
+          <p className='Home-pc'>(psst, press me to view my interactive portfolio)</p>
           <SocialLinks />
         </div>
       </div>
