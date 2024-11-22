@@ -5,6 +5,7 @@ import { profile } from '../../data.js'
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import Typewriter from '../../components/Typewriter/Typewriter.js';
 
 const Home = () => {
   const { name, role, description } = profile;
@@ -24,7 +25,7 @@ const Home = () => {
       <div className='container'>
         <div className='Home-caption'>
           <span className='Home-hi'>Hi I'm</span>
-          <h1 className='Home-h1'>{name}</h1>
+          <Typewriter name={name} />
           <h2 className='Home-h2'>{role}</h2>
           <p className='Home-description'>
             {description}

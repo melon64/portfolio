@@ -15,8 +15,14 @@ const Experience = () => {
                         {experiences.map((experience, index) => (
                             <VerticalTimelineElement
                                 key={uuidv4()}
-                                date={`${experience.StartDate} - ${experience.EndDate}`}
-                                iconStyle={{ background: index % 2 === 0 ? 'var(--primary)' : 'var(--primary)', color: 'var(--primary)' }}
+                                date={<span className="date-style">{`${experience.StartDate} - ${experience.EndDate}`}</span>}
+
+                                iconStyle={{ background: index % 2 === 0 ? 'var(--primary)' : 'var(--primary)', color: 'var(--primary)'}}
+                                icon = {<img alt="" src={experience.Icon} style={{
+                                    width: '100%', 
+                                    height: '100%',
+                                    borderRadius: '50%' 
+                                }}></img>}
                             >
                                 <h3 className="vertical-timeline-element-title">{experience.Role}, {experience.Company}</h3>
                                 <h4 className="vertical-timeline-element-subtitle">{experience.Location}</h4>
