@@ -18,3 +18,28 @@
     margin-top: 10px;
     list-style-type: disc;
 }
+
+.date-style {
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.Experience ul {
+    padding-left: 1rem;
+}
+
+.vertical-timeline-element-component {
+    margin-left: -10rem;
+}
+
+@media (max-width: 1169px) {
+    .date-style {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .Experience ul {
+        padding-left: 1rem;
+    } 
+}

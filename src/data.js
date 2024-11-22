@@ -195,9 +195,10 @@ const experiences = [
 			"Designed and deployed a C# Redis cache and client for microservices and configured an edge CDN with blob storage, cutting the average API response time for select services from 1.5s to 0.3s.",
 			"Enhanced product functionality through continuous development of cross-stack features in HTML, CSS, C#, and JavaScript, and successfully resolved over 50 bugs across mobile and web platforms.",
 			"Engineered a payment and subscription gateway using ASP.NET Core MVC and Stripe webhooks, processing $30k/month, as well as an analytics dashboard to boost financial reporting efficiency",
-            "• Spearheaded a 100% codebase migration from .NET Core 2.0 to 6.0, improving performance and package compatibility."
+            "Spearheaded a 100% codebase migration from .NET Core 2.0 to 6.0, improving performance and package compatibility."
 		],
-        Location: "Toronto, ON"
+        Location: "Toronto, ON",
+		Icon: "./images/sparklease.jpeg"
     },
 	{
         Company: "Royal Bank of Canada",
@@ -209,7 +210,8 @@ const experiences = [
 			"Established CI/CD pipelines with Jenkins on AKS integrated with 10+ control tools; configured Kubernetes clusters for security following internal DevSecOps standards.",
 			"Implemented robust Terraform IaC for Azure AKS clusters, enabling optimized connections to external OpenAI instances and saving developer hours."
 		],
-        Location: "Toronto, ON"
+        Location: "Toronto, ON",
+		Icon: "./images/RBC.png"
     },
     {
         Company: "Royal Bank of Canada",
@@ -221,7 +223,8 @@ const experiences = [
 			"Facilitated the addition of various UI/UX interfaces through the creation of SCSS data themes and reactive Angular components using NgRx.",
 			"Streamlined the implementation of a backend data pipeline by adding a Elasticsearch engine web crawler as FastAPI service - dynamic threading and a custom router logic flow were used to reduce load times by up to 50x.",
 		],
-        Location: "Toronto, ON"
+        Location: "Toronto, ON",
+		Icon: "./images/RBC.png"
     },
     {
         Company: "Immerse Education",
@@ -232,7 +235,8 @@ const experiences = [
 			"Compiled and augmented financial transactions data from Kaggle datasets and trained NB, DT, LR, and CNN models in R with the collected data for the classification of financial fraud (CNN model was 24% more accurate than conventional classifiers proposed by other papers).",
 			"Wrote a paper documenting the project under the mentorship of professor Giovanna Maria Dimitri who has a Cambridge computer science PhD.",
 		],
-        Location: "Cambridge, England"
+        Location: "Cambridge, England",
+		Icon: "./images/Immerse.jpg"
     },
 ];
 
