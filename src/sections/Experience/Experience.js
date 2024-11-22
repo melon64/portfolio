@@ -18,7 +18,7 @@ const Experience = () => {
                                 date={<span className="date-style">{`${experience.StartDate} - ${experience.EndDate}`}</span>}
 
                                 iconStyle={{ background: index % 2 === 0 ? 'var(--primary)' : 'var(--primary)', color: 'var(--primary)'}}
-                                icon = {<img src={experience.Icon} style={{
+                                icon = {<img alt="" src={experience.Icon} style={{
                                     width: '100%', 
                                     height: '100%',
                                     borderRadius: '50%' 
