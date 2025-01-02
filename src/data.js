@@ -186,15 +186,28 @@ const stack = [
 ]
 
 const experiences = [
+	{
+		Company: "Shopify",
+		Role: "Software Engineer - Backend",
+		StartDate: "September 2024",
+		EndDate: "December 2024",
+		Description: [
+			"Developed a Rails geolocation service and refactored Action View components for the Shopify portal.",
+			"Improved Kafka topic processing and erasure job SQL query generation to support BigQuery table redactions indexed by cookie IDs, increasing PII erasure coverage from 22% to 100%.",
+			"Provisioned GCP Dataplex resources with Terraform and implemented a Rake task in GitHub Actions to synchronize and standardize SQL table metadata and schemas across 250+ applications.",
+			"Built a pipeline failure notifier job in Ruby with GitHub issues and Slackbot integration, cutting SEV-3 incident response times across 78 services and improving observability."
+		],
+		Location: "Toronto, ON",
+		Icon: "./images/shopify.png"
+	},
     {
         Company: "Sparklease",
 		Role: "Full Stack Developer",
         StartDate: "January 2024",
         EndDate: "August 2024",
         Description: [
-			"Designed and deployed a C# Redis cache and client for microservices and configured an edge CDN with blob storage, cutting the average API response time for select services from 1.5s to 0.3s.",
-			"Enhanced product functionality through continuous development of cross-stack features in HTML, CSS, C#, and JavaScript, and successfully resolved over 50 bugs across mobile and web platforms.",
-			"Engineered a payment and subscription gateway using ASP.NET Core MVC and Stripe webhooks, processing $30k/month, as well as an analytics dashboard to boost financial reporting efficiency",
+			"Architected and implemented a C# Redis caching layer for microservices, integrated with an edge CDN and Azure Blob Storage, optimizing API response times from 1.5s to 0.3s for high-traffic services.",
+			"Engineered a payment and subscription gateway using ASP.NET Core MVC and Stripe webhooks, processing $30k/month, as well as an analytics dashboard to boost financial reporting efficiency.",
             "Spearheaded a 100% codebase migration from .NET Core 2.0 to 6.0, improving performance and package compatibility."
 		],
         Location: "Toronto, ON",
@@ -202,7 +215,7 @@ const experiences = [
     },
 	{
         Company: "Royal Bank of Canada",
-		Role: "Software Engineer - Cloud Security",
+		Role: "Software Engineer - Infrastructure Security",
         StartDate: "May 2023",
         EndDate: "August 2023",
         Description: [
@@ -215,7 +228,7 @@ const experiences = [
     },
     {
         Company: "Royal Bank of Canada",
-		Role: "Software Developer - Innovation Lab",
+		Role: "Software Developer - Developer Tools",
         StartDate: "July 2022",
         EndDate: "August 2022",
         Description: [
