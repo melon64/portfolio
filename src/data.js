@@ -187,6 +187,31 @@ const stack = [
 
 const experiences = [
 	{
+		Company: "Amazon",
+		Role: "Software Development Engineer",
+		StartDate: "Sept 2025",
+		EndDate: "Present",
+		Description: [
+			"TBD...",
+		],
+		Location: "Vancouver, BC",
+		Icon: "./images/amazon.png"
+	},
+	{
+		Company: "Meta",
+		Role: "Production Engineer",
+		StartDate: "May 2025",
+		EndDate: "August 2025",
+		Description: [
+			"Engineered pipelines for advertisement data in C++ and Python to detect off-site conversion signal regression, reducing signal loss by 34% and improving the reliability of metrics for millions of advertisers.",
+			"Built a high-throughput monitoring and alerting system processing billions of rows daily across 12 ad signals, halving SEV response times and enabling faster detection of aggressive SLO burn rates.",
+			"Developed a daily statistical-significance Python pipeline for ad accounts and campaigns, slashing response time to regressions and averting over $100K in ad-spend losses within a week of launch.",
+			"Automated oncall runbooks with asynchronous rule-based analysis, reducing root cause investigation time by 99%."
+		],
+		Location: "Bellevue, WA",
+		Icon: "./images/meta.png"
+	},
+	{
 		Company: "Shopify",
 		Role: "Software Engineer - Backend",
 		StartDate: "September 2024",
@@ -228,7 +253,7 @@ const experiences = [
     },
     {
         Company: "Royal Bank of Canada",
-		Role: "Software Developer - Developer Tools",
+		Role: "Innovation Developer - Developer Tools",
         StartDate: "July 2022",
         EndDate: "August 2022",
         Description: [

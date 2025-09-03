@@ -1,5 +1,5 @@
 import React from 'react';
-import { experiences } from '../../data.js';
+import * as data from '../../data.js';
 import { v4 as uuidv4 } from 'uuid';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -12,7 +12,7 @@ const Experience = () => {
                 <h2 className='Experience-h2 section-head'>Experience</h2>
                 <div className='Experience-wrapper'>
                     <VerticalTimeline>
-                        {experiences.map((experience, index) => (
+                        {data.experiences.map((experience, index) => (
                             <VerticalTimelineElement
                                 key={uuidv4()}
                                 date={<span className="date-style">{`${experience.StartDate} - ${experience.EndDate}`}</span>}
